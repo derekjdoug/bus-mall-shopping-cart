@@ -4,6 +4,7 @@
 
 // Set up an empty cart for use on this page.
 const cart = new Cart([]);
+console.log(cart);
 
 // On screen load, we call this method to put all of the busmall options
 // (the things in the Product.allProducts array) into the drop down list.
@@ -12,7 +13,11 @@ function populateForm() {
   //TODO: Add an <option> tag inside the form's select for each product
   const selectElement = document.getElementById('items');
   for (let i in Product.allProducts) {
-
+    let option = document.createElement('option');
+    selectElement.appendChild(option);
+    option.textContent = `${Product.allProducts[i].name}`;
+    option.id = `${Product.allProducts[i].name}`;
+    // console.log(option);
   }
 
 }
@@ -21,21 +26,30 @@ function populateForm() {
 // object, save the whole thing back to local storage and update the screen
 // so that it shows the # of items in the cart and a quick preview of the cart itself.
 function handleSubmit(event) {
-
   // TODO: Prevent the page from reloading
+  event.preventDefault();
 
   // Do all the things ...
   addSelectedItemToCart();
-  cart.saveToLocalStorage();
-  updateCounter();
-  updateCartPreview();
+  // cart.saveToLocalStorage();
+  // updateCounter();
+  // updateCartPreview();
 
 }
 
 // TODO: Add the selected item and quantity to the cart
 function addSelectedItemToCart() {
   // TODO: suss out the item picked from the select list
+  let i;
+  for(i = 0; i < Product.allProducts.length; i++){
+    let item = document.getElementById(`${Product.allProducts[i]}`);
+    if(item === Product.allProducts[i].name){
+      cart.push(Product.allProducts[i]);
+      console.log(cart);
+    }
+  }
   // TODO: get the quantity
+  let quantity = document.getElementById('quantity')
   // TODO: using those, add one item to the Cart
 }
 
