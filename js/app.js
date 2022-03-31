@@ -8,15 +8,21 @@ const Cart = function(items) {
 
 Cart.prototype.addItem = function(product, quantity) {
   // TODO: Fill in this instance method to create a new CartItem and add it to this.items
+  let newItem = new CartItem(product, quantity);
+  Cart.this.items.push(newItem);
+  console.log(this.items);
 };
 
 Cart.prototype.saveToLocalStorage = function() {
   // TODO: Fill in this instance method to save the contents of the cart to localStorage
+  let cartString = JSON.stringify(this.items);
+  localStorage.setItem('cartData', cartString);
 };
 
-Cart.prototype.removeItem = function(item) {
+Cart.prototype.removeItem = function(index) {
   // TODO: Fill in this instance method to remove one item from the cart.
   // Note: You will have to decide what kind of parameter to pass in here!
+  this.items.splice(index, 1);
 };
 
 const CartItem = function(product, quantity) {
@@ -31,6 +37,7 @@ const Product = function(filePath, name) {
   Product.allProducts.push(this);
 };
 Product.allProducts = [];
+console.log(Product.allProducts);
 
 function generateCatalog() {
   new Product('assets/bag.jpg', 'Bag');
