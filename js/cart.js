@@ -20,30 +20,42 @@ function renderCart() {
 
 // TODO: Remove all of the rows (tr) in the cart table (tbody)
 function clearCart() {
-
+  // let table = document.getElementById('cart');
+  // table.removeChild('tr');
 }
 
-// TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
+// DONE: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
 
-  // TODO: Find the table body
+  // DONE: Find the table body
   let table = document.getElementById('cart');
-
-  // TODO: Iterate over the items in the cart
-  for (let i = 0; i < cart.length; i++) {
-    // TODO: Create a TR
+  let cartData = JSON.parse(localStorage.getItem('cartData'));
+  console.log(cartData);
+  // DONE: Iterate over the items in the cart
+  for (let i = 0; i < cartData.length; i++) {
+    // DONE: Create a TR
     let tr = document.createElement('tr');
     table.appendChild(tr);
-    // TODO: Create a TD for the delete link, quantity,  and the item
+    // DONE: Create a TD for the delete link, quantity,  and the item
     let del = document.createElement('td');
     let quantity = document.createElement('td');
     let item = document.createElement('td');
+    del.textContent = 'X';
+    quantity.textContent = cartData[i].quantity;
+    item.textContent = cartData[i].product;
+    tr.appendChild(del);
+    tr.appendChild(quantity);
+    tr.appendChild(item);
+    console.log(cartData[i].quantity);
+    console.log(cartData[i].product);
 
-    // TODO: Add the TR to the TBODY and each of the TD's to the TR
+
+    // DONE: Add the TR to the TBODY and each of the TD's to the TR
   }
 
 
 }
+
 
 function removeItemFromCart(event) {
 

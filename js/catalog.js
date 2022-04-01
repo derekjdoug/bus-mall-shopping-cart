@@ -4,6 +4,7 @@
 
 // Set up an empty cart for use on this page.
 const cart = new Cart([]);
+// let cart = JSON.parse(localStorage.getItem('cartData')) ?? [];
 
 // On screen load, we call this method to put all of the busmall options
 // (the things in the Product.allProducts array) into the drop down list.
