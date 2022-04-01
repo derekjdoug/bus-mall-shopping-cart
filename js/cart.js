@@ -38,7 +38,7 @@ function showCart() {
     let del = document.createElement('td');
     let quantity = document.createElement('td');
     let item = document.createElement('td');
-    
+
     // TODO: Add the TR to the TBODY and each of the TD's to the TR
   }
 
