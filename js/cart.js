@@ -62,8 +62,12 @@ function removeItemFromCart(event) {
   // TODO: Save the cart back to local storage
   // DONE: Re-draw the cart table
   let deleteMe = event.target.parentElement.querySelector('td:nth-of-type(3)');
+  for(let i = 0; i < cartData.length; i++){
+    if(i == deleteMe){
   cart.removeItem(deleteMe);
   renderCart();
+    }
+  }
 }
 
 // This will initialize the page and draw the cart on screen
